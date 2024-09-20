@@ -7,8 +7,8 @@ part 'todo.g.dart';
 class Todo with _$Todo {
   const factory Todo({
     required String todo,
-    required int id,
-    required bool isChecked,
+    required String id,
+    required bool isCompleted,
   }) = _Todo;
 
   factory Todo.fromJson(Map<String, Object?> json) => _$TodoFromJson(json);

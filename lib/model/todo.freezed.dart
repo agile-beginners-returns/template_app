@@ -21,8 +21,8 @@ Todo _$TodoFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Todo {
   String get todo => throw _privateConstructorUsedError;
-  int get id => throw _privateConstructorUsedError;
-  bool get isChecked => throw _privateConstructorUsedError;
+  String get id => throw _privateConstructorUsedError;
+  bool get isCompleted => throw _privateConstructorUsedError;
 
   /// Serializes this Todo to a JSON map.
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -38,7 +38,7 @@ abstract class $TodoCopyWith<$Res> {
   factory $TodoCopyWith(Todo value, $Res Function(Todo) then) =
       _$TodoCopyWithImpl<$Res, Todo>;
   @useResult
-  $Res call({String todo, int id, bool isChecked});
+  $Res call({String todo, String id, bool isCompleted});
 }
 
 /// @nodoc
@@ -58,7 +58,7 @@ class _$TodoCopyWithImpl<$Res, $Val extends Todo>
   $Res call({
     Object? todo = null,
     Object? id = null,
-    Object? isChecked = null,
+    Object? isCompleted = null,
   }) {
     return _then(_value.copyWith(
       todo: null == todo
@@ -68,10 +68,10 @@ class _$TodoCopyWithImpl<$Res, $Val extends Todo>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      isChecked: null == isChecked
-          ? _value.isChecked
-          : isChecked // ignore: cast_nullable_to_non_nullable
+              as String,
+      isCompleted: null == isCompleted
+          ? _value.isCompleted
+          : isCompleted // ignore: cast_nullable_to_non_nullable
               as bool,
     ) as $Val);
   }
@@ -84,7 +84,7 @@ abstract class _$$TodoImplCopyWith<$Res> implements $TodoCopyWith<$Res> {
       __$$TodoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String todo, int id, bool isChecked});
+  $Res call({String todo, String id, bool isCompleted});
 }
 
 /// @nodoc
@@ -101,7 +101,7 @@ class __$$TodoImplCopyWithImpl<$Res>
   $Res call({
     Object? todo = null,
     Object? id = null,
-    Object? isChecked = null,
+    Object? isCompleted = null,
   }) {
     return _then(_$TodoImpl(
       todo: null == todo
@@ -111,10 +111,10 @@ class __$$TodoImplCopyWithImpl<$Res>
       id: null == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
-              as int,
-      isChecked: null == isChecked
-          ? _value.isChecked
-          : isChecked // ignore: cast_nullable_to_non_nullable
+              as String,
+      isCompleted: null == isCompleted
+          ? _value.isCompleted
+          : isCompleted // ignore: cast_nullable_to_non_nullable
               as bool,
     ));
   }
@@ -124,7 +124,7 @@ class __$$TodoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TodoImpl implements _Todo {
   const _$TodoImpl(
-      {required this.todo, required this.id, required this.isChecked});
+      {required this.todo, required this.id, required this.isCompleted});
 
   factory _$TodoImpl.fromJson(Map<String, dynamic> json) =>
       _$$TodoImplFromJson(json);
@@ -132,13 +132,13 @@ class _$TodoImpl implements _Todo {
   @override
   final String todo;
   @override
-  final int id;
+  final String id;
   @override
-  final bool isChecked;
+  final bool isCompleted;
 
   @override
   String toString() {
-    return 'Todo(todo: $todo, id: $id, isChecked: $isChecked)';
+    return 'Todo(todo: $todo, id: $id, isCompleted: $isCompleted)';
   }
 
   @override
@@ -148,13 +148,13 @@ class _$TodoImpl implements _Todo {
             other is _$TodoImpl &&
             (identical(other.todo, todo) || other.todo == todo) &&
             (identical(other.id, id) || other.id == id) &&
-            (identical(other.isChecked, isChecked) ||
-                other.isChecked == isChecked));
+            (identical(other.isCompleted, isCompleted) ||
+                other.isCompleted == isCompleted));
   }
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, todo, id, isChecked);
+  int get hashCode => Object.hash(runtimeType, todo, id, isCompleted);
 
   /// Create a copy of Todo
   /// with the given fields replaced by the non-null parameter values.
@@ -175,17 +175,17 @@ class _$TodoImpl implements _Todo {
 abstract class _Todo implements Todo {
   const factory _Todo(
       {required final String todo,
-      required final int id,
-      required final bool isChecked}) = _$TodoImpl;
+      required final String id,
+      required final bool isCompleted}) = _$TodoImpl;
 
   factory _Todo.fromJson(Map<String, dynamic> json) = _$TodoImpl.fromJson;
 
   @override
   String get todo;
   @override
-  int get id;
+  String get id;
   @override
-  bool get isChecked;
+  bool get isCompleted;
 
   /// Create a copy of Todo
   /// with the given fields replaced by the non-null parameter values.

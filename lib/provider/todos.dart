@@ -8,11 +8,16 @@ part 'todos.g.dart';
 class Todos extends _$Todos {
   @override
   List<Todo> build() {
-    return [Todo(todo: "お散歩", id: 1, isChecked: false)];
+    return [];
   }
 
   // stateの配列に新しくtodoインスタンスを追加するメソッドを追加したい
   void addTodo(Todo newTodo) {
     state = [...state, newTodo];
+  }
+
+  // stateから、引数に渡されたdeleteTodoとidが一致するものを削除したい
+  void deleteTodoById(String id) {
+    state = state.where((todo) => todo.id != id).toList();
   }
 }
