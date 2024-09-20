@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kagb_template/provider/todos.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -7,6 +8,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final TextEditingController _todoController = TextEditingController();
+    final todos = ref.watch(todosProvider);
 
     return Scaffold(
       appBar: AppBar(
@@ -26,6 +28,16 @@ class HomeScreen extends ConsumerWidget {
                 ),
                 onSubmitted: (text) => submitTodo(text),
               ),
+              Expanded(
+                child: ListView.builder(
+                  itemBuilder: (BuildContext context, int index) {
+                    return ListTile(
+                      title: Text(todos[index].todo),
+                    );
+                  },
+                  itemCount: todos.length,
+                ),
+              )
             ],
           ),
         ),
