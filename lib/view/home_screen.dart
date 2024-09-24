@@ -44,6 +44,7 @@ class HomeScreen extends ConsumerWidget {
                           return TodoCard(
                             todo: todos[index],
                             deleteTodo: (id) => deleteTodo(ref, id),
+                            toggleComplete: (id) => toggleComplete(ref, id),
                           );
                         },
                         itemCount: todos.length,
@@ -79,5 +80,12 @@ class HomeScreen extends ConsumerWidget {
 
   deleteTodo(WidgetRef ref, String id) {
     ref.read(todosProvider.notifier).deleteTodoById(id);
+  }
+
+  toggleComplete(
+    WidgetRef ref,
+    String id,
+  ) {
+    ref.read(todosProvider.notifier).toggleComplete(id);
   }
 }
