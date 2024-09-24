@@ -1,5 +1,4 @@
 import 'package:kagb_template/model/todo.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'todos.g.dart';
@@ -19,5 +18,18 @@ class Todos extends _$Todos {
   // stateから、引数に渡されたdeleteTodoとidが一致するものを削除したい
   void deleteTodoById(String id) {
     state = state.where((todo) => todo.id != id).toList();
+  }
+
+  // 引数に渡されたTodo.idと一致するTodoのcompleteを反転させたい
+  void toggleComplete(String id) {
+    state = state.map((todo) {
+      if (todo.id == id) {
+        return todo.copyWith(
+          isCompleted: !todo.isCompleted,
+        );
+      } else {
+        return todo;
+      }
+    }).toList();
   }
 }
