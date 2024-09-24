@@ -10,7 +10,7 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final TextEditingController todoController = TextEditingController();
+    final TextEditingController _todoController = TextEditingController();
 
     return SafeArea(
       child: Scaffold(
@@ -25,17 +25,14 @@ class HomeScreen extends ConsumerWidget {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 15.0),
-                  child: Consumer(
-                    builder: (context, ref, child) {
-                      return TextField(
-                        controller: todoController,
-                        decoration: const InputDecoration(
-                          labelText: 'Enter your Todo',
-                          border: OutlineInputBorder(),
-                        ),
-                        onSubmitted: (text) => submitTodo(text, ref),
-                      );
-                    },
+                  child: TextField(
+                    controller: _todoController,
+                    decoration: const InputDecoration(
+                      labelText: 'Enter your Todo',
+                      border: OutlineInputBorder(),
+                    ),
+                    onSubmitted: (text) =>
+                        submitTodo(text, ref, _todoController),
                   ),
                 ),
                 Expanded(
@@ -66,14 +63,18 @@ class HomeScreen extends ConsumerWidget {
     );
   }
 
-  submitTodo(String todo, WidgetRef ref) {
-    // TODO: 入力されたTODOをViewModelに通知し、登録する
+  submitTodo(
+    String todo,
+    WidgetRef ref,
+    TextEditingController textEditingController,
+  ) {
     final newTodo = Todo(
       todo: todo,
       id: const Uuid().v4(),
       isCompleted: false,
     );
     ref.read(todosProvider.notifier).addTodo(newTodo);
+    textEditingController.text = "";
   }
 
   deleteTodo(WidgetRef ref, String id) {
