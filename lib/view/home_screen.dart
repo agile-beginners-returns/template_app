@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:kagb_template/extensions/color_code.dart';
 import 'package:kagb_template/model/todo.dart';
 import 'package:kagb_template/provider/todos.dart';
 import 'package:kagb_template/view/components/todo_card.dart';
@@ -16,7 +17,8 @@ class HomeScreen extends ConsumerWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text('Todo App'),
-          backgroundColor: Colors.blue,
+          backgroundColor: HexColor(mainBackGroundColor),
+          foregroundColor: HexColor(foregroundColor),
         ),
         body: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -59,6 +61,8 @@ class HomeScreen extends ConsumerWidget {
         floatingActionButton: FloatingActionButton(
           onPressed: () => print("押された"),
           child: const Icon(Icons.add),
+          backgroundColor: HexColor(mainBackGroundColor),
+          foregroundColor: HexColor(foregroundColor),
         ),
       ),
     );
