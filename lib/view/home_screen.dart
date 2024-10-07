@@ -12,6 +12,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final TextEditingController _todoController = TextEditingController();
+    final todosState = ref.watch(todosProvider);
 
     return SafeArea(
       child: Scaffold(
@@ -37,32 +38,39 @@ class HomeScreen extends ConsumerWidget {
                         submitTodo(text, ref, _todoController),
                   ),
                 ),
-                Expanded(
-                  child: Consumer(
-                    builder: (context, ref, child) {
-                      final todos = ref.watch(todosProvider);
-                      return ListView.builder(
-                        itemBuilder: (BuildContext context, int index) {
-                          return TodoCard(
-                            todo: todos[index],
-                            deleteTodo: (id) => deleteTodo(ref, id),
-                            toggleComplete: (id) => toggleComplete(ref, id),
-                          );
-                        },
-                        itemCount: todos.length,
-                      );
-                    },
+                todosState.when(
+                  data: (todos) => Expanded(
+                    child: Consumer(
+                      builder: (context, ref, child) {
+                        return ListView.builder(
+                          itemBuilder: (BuildContext context, int index) {
+                            return TodoCard(
+                              todo: todos[index],
+                              deleteTodo: (id) => deleteTodo(ref, id),
+                              toggleComplete: (id) => toggleComplete(ref, id),
+                            );
+                          },
+                          itemCount: todos.length,
+                        );
+                      },
+                    ),
                   ),
+                  loading: () => const Expanded(
+                    child: Center(
+                      child: CircularProgressIndicator(),
+                    ),
+                  ),
+                  error: (error, stack) => Text('Error: $error'),
                 )
               ],
             ),
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          onPressed: () => print("押された"),
-          child: const Icon(Icons.add),
+          onPressed: () => getTodos(ref),
           backgroundColor: HexColor(mainBackGroundColor),
           foregroundColor: HexColor(foregroundColor),
+          child: const Icon(Icons.add),
         ),
       ),
     );
@@ -74,7 +82,7 @@ class HomeScreen extends ConsumerWidget {
     TextEditingController textEditingController,
   ) {
     final newTodo = Todo(
-      todo: todo,
+      todoTask: todo,
       id: const Uuid().v4(),
       isCompleted: false,
     );
@@ -88,8 +96,12 @@ class HomeScreen extends ConsumerWidget {
 
   toggleComplete(
     WidgetRef ref,
-    String id,
+    Todo todo,
   ) {
-    ref.read(todosProvider.notifier).toggleComplete(id);
+    ref.read(todosProvider.notifier).toggleComplete(todo);
+  }
+
+  void getTodos(WidgetRef ref) {
+    ref.read(todosProvider.notifier).getTodos();
   }
 }

@@ -20,7 +20,7 @@ Todo _$TodoFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$Todo {
-  String get todo => throw _privateConstructorUsedError;
+  String get todoTask => throw _privateConstructorUsedError;
   String get id => throw _privateConstructorUsedError;
   bool get isCompleted => throw _privateConstructorUsedError;
 
@@ -38,7 +38,7 @@ abstract class $TodoCopyWith<$Res> {
   factory $TodoCopyWith(Todo value, $Res Function(Todo) then) =
       _$TodoCopyWithImpl<$Res, Todo>;
   @useResult
-  $Res call({String todo, String id, bool isCompleted});
+  $Res call({String todoTask, String id, bool isCompleted});
 }
 
 /// @nodoc
@@ -56,14 +56,14 @@ class _$TodoCopyWithImpl<$Res, $Val extends Todo>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? todo = null,
+    Object? todoTask = null,
     Object? id = null,
     Object? isCompleted = null,
   }) {
     return _then(_value.copyWith(
-      todo: null == todo
-          ? _value.todo
-          : todo // ignore: cast_nullable_to_non_nullable
+      todoTask: null == todoTask
+          ? _value.todoTask
+          : todoTask // ignore: cast_nullable_to_non_nullable
               as String,
       id: null == id
           ? _value.id
@@ -84,7 +84,7 @@ abstract class _$$TodoImplCopyWith<$Res> implements $TodoCopyWith<$Res> {
       __$$TodoImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({String todo, String id, bool isCompleted});
+  $Res call({String todoTask, String id, bool isCompleted});
 }
 
 /// @nodoc
@@ -99,14 +99,14 @@ class __$$TodoImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? todo = null,
+    Object? todoTask = null,
     Object? id = null,
     Object? isCompleted = null,
   }) {
     return _then(_$TodoImpl(
-      todo: null == todo
-          ? _value.todo
-          : todo // ignore: cast_nullable_to_non_nullable
+      todoTask: null == todoTask
+          ? _value.todoTask
+          : todoTask // ignore: cast_nullable_to_non_nullable
               as String,
       id: null == id
           ? _value.id
@@ -124,13 +124,13 @@ class __$$TodoImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$TodoImpl implements _Todo {
   const _$TodoImpl(
-      {required this.todo, required this.id, required this.isCompleted});
+      {required this.todoTask, required this.id, required this.isCompleted});
 
   factory _$TodoImpl.fromJson(Map<String, dynamic> json) =>
       _$$TodoImplFromJson(json);
 
   @override
-  final String todo;
+  final String todoTask;
   @override
   final String id;
   @override
@@ -138,7 +138,7 @@ class _$TodoImpl implements _Todo {
 
   @override
   String toString() {
-    return 'Todo(todo: $todo, id: $id, isCompleted: $isCompleted)';
+    return 'Todo(todoTask: $todoTask, id: $id, isCompleted: $isCompleted)';
   }
 
   @override
@@ -146,7 +146,8 @@ class _$TodoImpl implements _Todo {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$TodoImpl &&
-            (identical(other.todo, todo) || other.todo == todo) &&
+            (identical(other.todoTask, todoTask) ||
+                other.todoTask == todoTask) &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.isCompleted, isCompleted) ||
                 other.isCompleted == isCompleted));
@@ -154,7 +155,7 @@ class _$TodoImpl implements _Todo {
 
   @JsonKey(includeFromJson: false, includeToJson: false)
   @override
-  int get hashCode => Object.hash(runtimeType, todo, id, isCompleted);
+  int get hashCode => Object.hash(runtimeType, todoTask, id, isCompleted);
 
   /// Create a copy of Todo
   /// with the given fields replaced by the non-null parameter values.
@@ -174,14 +175,14 @@ class _$TodoImpl implements _Todo {
 
 abstract class _Todo implements Todo {
   const factory _Todo(
-      {required final String todo,
+      {required final String todoTask,
       required final String id,
       required final bool isCompleted}) = _$TodoImpl;
 
   factory _Todo.fromJson(Map<String, dynamic> json) = _$TodoImpl.fromJson;
 
   @override
-  String get todo;
+  String get todoTask;
   @override
   String get id;
   @override

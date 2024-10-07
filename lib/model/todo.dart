@@ -6,7 +6,7 @@ part 'todo.g.dart';
 @freezed
 class Todo with _$Todo {
   const factory Todo({
-    required String todo,
+    required String todoTask,
     required String id,
     required bool isCompleted,
   }) = _Todo;
