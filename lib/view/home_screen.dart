@@ -5,6 +5,7 @@ import 'package:kagb_template/model/todo.dart';
 import 'package:kagb_template/provider/todos.dart';
 import 'package:kagb_template/view/components/todo_card.dart';
 import 'package:uuid/uuid.dart';
+import 'components/openai_test.dart';
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -25,6 +26,7 @@ class HomeScreen extends ConsumerWidget {
           child: Center(
             child: Column(
               children: [
+                OpenAITest(),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 15.0),
                   child: TextField(
