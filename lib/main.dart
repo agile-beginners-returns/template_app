@@ -2,9 +2,11 @@ import "package:flutter/material.dart";
 import "package:flutter_riverpod/flutter_riverpod.dart";
 import "package:kagb_template/db/database.dart";
 import "package:kagb_template/view/home_screen.dart";
+import "package:flutter_dotenv/flutter_dotenv.dart";
 
 late AppDatabase database;
-void main() {
+Future<void> main() async{
+  await dotenv.load(fileName: '.env');
   database = AppDatabase();
   runApp(
     const ProviderScope(
