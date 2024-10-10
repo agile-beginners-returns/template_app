@@ -25,10 +25,10 @@ class TodoCard extends StatelessWidget {
             todo.isCompleted ? Icons.check_circle : Icons.circle,
             color: todo.isCompleted ? Colors.green : Colors.grey,
           ),
-          onPressed: () => toggleComplete(todo.id),
+          onPressed: () => toggleComplete(todo),
         ),
         title: Text(
-          todo.todo,
+          todo.todoTask,
           style: TextStyle(
             decoration: todo.isCompleted
                 ? TextDecoration.lineThrough
